@@ -13,9 +13,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".gitattributes" />
+    <None Remove=".gitignore" />
     <None Remove="Content\Renderer.json" />
     <None Remove="Content\SanDiegoNetwork.mmpk" />
     <None Remove="Content\start_points.geodatabase" />
+    <None Remove="LICENSE.txt" />
   </ItemGroup>
 
   <ItemGroup>
