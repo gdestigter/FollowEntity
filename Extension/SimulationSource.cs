@@ -70,7 +70,7 @@ public partial class SimulationSource : DynamicEntityDataSource
         try
         {
             // only run the method if the previous run is complete
-            if (!_semaphore.Wait(0))
+            if (!await _semaphore.WaitAsync(0))
             {
                 Trace.WriteLine($"{DateTime.Now} | Skipped generate frame");
                 return;
