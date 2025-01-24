@@ -67,15 +67,15 @@ public partial class SimulationSource : DynamicEntityDataSource
 
     private async void TimerCallback(object? o)
     {
+        // only run the method if the previous run is complete
+        if (!await _semaphore.WaitAsync(0))
+        {
+            Trace.WriteLine($"{DateTime.Now} | Skipped generate frame");
+            return;
+        }
+
         try
         {
-            // only run the method if the previous run is complete
-            if (!await _semaphore.WaitAsync(0))
-            {
-                Trace.WriteLine($"{DateTime.Now} | Skipped generate frame");
-                return;
-            }
-
             // update current routes (delete routes or start new routes if necessary)
             var routeList = _routes.ToList();
             foreach (var route in routeList)
